@@ -43,6 +43,7 @@ app.get('/', function(req, res){
   res.render('index', {
     title: 'TaskPoint',
     todos: global.todos,
+    done: global.done,
     scores: scores
   });
 });
@@ -75,7 +76,14 @@ global.todos = [
   }
 ];
 
-global.done = [];
+global.done = [
+  {
+    text: 'Build an Ice Castle',
+    points: 12,
+    assigned: ['Tray', 'That Guy I Saw in Sears'],
+    due: 'Top of the morn'
+  }
+];
 
 global.scores = {
   'Dave': 14,

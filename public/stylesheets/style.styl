@@ -19,7 +19,7 @@ gradient(color-top, color-middle, color-bottom)
 body
   background #f0f0f0
   font 14px "Lucida Grande", Helvetica, Arial, sans-serif
-  padding 50px
+  padding 10px 50px
   text-shadow 0 1px 0 white
 
 ul
@@ -30,7 +30,7 @@ ul
   li
     margin-bottom 12px
 
-.todos
+div.todos, div.done
   margin-left 20px
   width 50%
   
@@ -63,7 +63,7 @@ ul
 
   .due
     color pale
-    margin-left 20px
+    margin 0 20px
 
   button.done
     background red
@@ -72,7 +72,6 @@ ul
     color white
     font-weight bold
     gradient (#f00 - 10%) (#f00 - 20%) (#f00 - 30%)
-    margin-left 20px
     padding-bottom 2px
     position relative
     text-shadow 0 1px 0 (#f00 - 20%)
@@ -83,6 +82,27 @@ ul
 
     &:active
       gradient (#f00 - 30%) (#f00 - 20%) (#f00 - 10%)
+
+div.done
+  .assigned-to 
+    display inline
+    margin-left 10px
+
+    li
+      display inline-block
+      margin 0 !important
+      padding 0
+
+      &:after
+        content ","
+        margin-right 3px
+
+      &:last-child:after
+        content ""
+        margin-right 0
+
+  .points
+    top -2px
 
 .scoreboard
   background #777
@@ -106,4 +126,4 @@ ul
       border-radius 3px
       box-shadow 0 1px 1px black inset
       margin-right 10px
-      padding 3px
+      padding 3px 6px

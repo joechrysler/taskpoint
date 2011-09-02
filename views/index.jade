@@ -19,3 +19,14 @@ div.todos
         ul.assigned-to
           for name in todo.assigned
             li= name
+
+div.done
+  h2 Done
+  ul
+    for todo in done
+      li.done
+        span.points(class='points-' + todo.points)= todo.points
+        span.text= todo.text
+        ul.assigned-to
+          for name in todo.assigned
+            li= name
