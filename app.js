@@ -1,6 +1,8 @@
 var express = require('express');
+var socketio = require('socket.io');
 
 var app = module.exports = express.createServer();
+var io = socketio.listen(app);
 
 // Configuration
 
@@ -45,6 +47,20 @@ app.get('/', function(req, res){
     todos: global.todos,
     done: global.done,
     scores: scores
+  });
+});
+
+// socket.io
+
+io.sockets.on('connection', function(socket) {
+  socket.on('task-done', function(text) {
+    for (var i = 0; i < global.todos.length; i++) {
+      if (global.todos[i].text == text) {
+        global.done.push(global.todos.splice(i, 1)[0]);
+        socket.emit('task-done', text);
+        break;
+      };
+    };
   });
 });
 

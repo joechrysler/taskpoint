@@ -9,7 +9,7 @@ div.scoreboard
 
 div.todos
   h2 To Do
-  ul
+  ul.todos
     for todo in todos
       li.todo
         span.points(class='points-' + todo.points)= todo.points
@@ -22,7 +22,7 @@ div.todos
 
 div.done
   h2 Done
-  ul
+  ul.done
     for todo in done
       li.done
         span.points(class='points-' + todo.points)= todo.points
