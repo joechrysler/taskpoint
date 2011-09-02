@@ -1,1 +1,13 @@
 h1= title
+
+div.todos
+  h2 To Do
+  ul
+    for todo in todos
+      li.todo
+        span.points(class='points-' + todo.points)= todo.points
+        span.text= todo.text
+        span.due Due #{todo.due}
+        ul.assigned-to
+          for name in todo.assigned
+            li= name

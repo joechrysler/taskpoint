@@ -26,7 +26,27 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render('index', {
-    title: 'TaskPoint'
+    title: 'TaskPoint',
+    todos: [
+      {
+        text: 'Find the toriadors!',
+        points: 12,
+        assigned: ['Dan', 'Tony the Terrible Gladiator'],
+        due: 'June 3, 2012'
+      },
+      {
+        text: 'Move the cat.',
+        points: 15,
+        assigned: ['Wanda, King of the Fish People', 'Arnie', 'Alonzo', 'Rosencrantz & Guildenstern'],
+        due: 'Monday'
+      },
+      {
+        text: 'Figure of if Irene is really a goat or if that\'s just a title.',
+        points: 3,
+        assigned: ['Merv Dole', 'Irene the Goat', 'Walter'],
+        due: 'day after tomorrow'
+      }
+    ]
   });
 });
 

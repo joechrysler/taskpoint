@@ -4,3 +4,104 @@ body {
   padding: 50px;
   text-shadow: 0 1px 0 #fff;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  margin-bottom: 12px;
+}
+.todos {
+  margin-left: 20px;
+}
+.todos li.todo {
+  width: 500px;
+}
+.todos .text {
+  font-weight: bold;
+}
+.todos .points {
+  background: #008000;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  color: #fff;
+  float: left;
+  font-weight: bold;
+  height: 100%;
+  margin-right: 5px;
+  padding: 2px 5px;
+  position: relative;
+  text-shadow: 0 1px 0 #000;
+  top: -2px;
+}
+.todos .points.points-1 {
+  background: #009e00;
+}
+.todos .points.points-2 {
+  background: #00a300;
+}
+.todos .points.points-3 {
+  background: #00a800;
+}
+.todos .points.points-4 {
+  background: #00ad00;
+}
+.todos .points.points-5 {
+  background: #00b200;
+}
+.todos .points.points-6 {
+  background: #00b700;
+}
+.todos .points.points-7 {
+  background: #00bc00;
+}
+.todos .points.points-8 {
+  background: #00c100;
+}
+.todos .points.points-9 {
+  background: #00c600;
+}
+.todos .points.points-10 {
+  background: #00cb00;
+}
+.todos .points.points-11 {
+  background: #00d000;
+}
+.todos .points.points-12 {
+  background: #00d500;
+}
+.todos .points.points-13 {
+  background: #00da00;
+}
+.todos .points.points-14 {
+  background: #00df00;
+}
+.todos .points.points-15 {
+  background: #00e400;
+}
+.todos .points.points-16 {
+  background: #00e900;
+}
+.todos .points.points-17 {
+  background: #0e0;
+}
+.todos .points.points-18 {
+  background: #00f300;
+}
+.todos .points.points-19 {
+  background: #00f800;
+}
+.todos .points.points-20 {
+  background: #00fd00;
+}
+.todos ul.assigned-to li {
+  color: #999;
+  font-size: 13px;
+  margin: 3px 5px 3px 50px;
+}
+.todos .due {
+  color: #999;
+  margin-left: 20px;
+}

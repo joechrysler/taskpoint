@@ -1,5 +1,66 @@
+pale = #999
+
+
+border-radius(n)
+  border-radius n
+  -moz-border-radius n
+  -webkit-border-radius n
+
+box-shadow()
+  box-shadow arguments
+  -moz-box-shadow arguments
+  -webkit-box-shadow arguments
+
+gradient(color-top, color-middle, color-bottom)
+  background -moz-linear-gradient(top, color-top 0%, color-middle 50%, color-bottom)
+  background -webkit-gradient(linear, left top, left bottom, from(color-top), color-stop(0.50, color-middle), to(color-bottom))
+
+
 body
   background #f0f0f0
   font 14px "Lucida Grande", Helvetica, Arial, sans-serif
   padding 50px
   text-shadow 0 1px 0 white
+
+ul
+  list-style-type none
+  margin 0
+  padding 0
+
+  li
+    margin-bottom 12px
+
+.todos
+  margin-left 20px
+
+  li.todo
+    width 500px
+
+  .text
+    font-weight bold
+
+  .points
+    background green
+    border-radius 3px
+    color white
+    float left
+    font-weight bold
+    height 100%
+    margin-right 5px
+    padding 2px 5px
+    position relative
+    text-shadow 0 1px 0 black
+    top -2px
+
+    for points in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+      &.points-{points}
+        background #090 + (rgb(0, 5, 0) * points)
+
+  ul.assigned-to li
+    color pale
+    font-size 13px
+    margin 3px 5px 3px 50px
+
+  .due
+    color pale
+    margin-left 20px
