@@ -4,13 +4,17 @@ body {
   padding: 10px 50px;
   text-shadow: 0 1px 0 #fff;
 }
+ol,
 ul {
-  list-style-type: none;
   margin: 0;
   padding: 0;
 }
+ol li,
 ul li {
   margin-bottom: 12px;
+}
+ul {
+  list-style-type: none;
 }
 div.todos,
 div.done {
@@ -189,11 +193,12 @@ div.done .points {
   float: right;
   padding: 30px;
   text-shadow: 0 1px 1px #000;
-  width: 200px;
+  width: 300px;
 }
 .scoreboard .score {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: normal;
+  margin-left: 20px;
 }
 .scoreboard .score:last-child {
   margin-bottom: 0;

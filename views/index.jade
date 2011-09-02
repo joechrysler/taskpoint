@@ -1,7 +1,11 @@
 h1= title
 
 div.scoreboard
-  ul
+  li.score.base(style='display:none;')
+    span.points
+    span.name
+
+  ol.scores
     for score in scores
       li.score
         span.points= score.score
@@ -24,6 +28,11 @@ div.done
   h2 Done
   ul.done
     for todo in done
+      li.done.base(style='display:none;')
+        span.points
+        span.text
+        ul.assigned-to
+
       li.done
         span.points(class='points-' + todo.points)= todo.points
         span.text= todo.text

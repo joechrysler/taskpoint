@@ -27,26 +27,11 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', function(req, res){
-  var scores = (function() {
-    var scores = [];
-    for (var key in global.scores) {
-      if (global.scores.hasOwnProperty(key)) {
-        scores.push({
-          name: key,
-          score: global.scores[key]
-        });
-      };
-    };
-    return scores;
-  })().sort(function(a, b) {
-    return (b.score - a.score);
-  });
-
   res.render('index', {
     title: 'TaskPoint',
     todos: global.todos,
     done: global.done,
-    scores: scores
+    scores: getPoints()
   });
 });
 
@@ -56,8 +41,20 @@ io.sockets.on('connection', function(socket) {
   socket.on('task-done', function(text) {
     for (var i = 0; i < global.todos.length; i++) {
       if (global.todos[i].text == text) {
-        global.done.push(global.todos.splice(i, 1)[0]);
+        doneItem = global.todos.splice(i, 1)[0];
+        global.done.push(doneItem);
         socket.emit('task-done', text);
+        
+        for (var j = 0; j < doneItem.assigned.length; j++) {
+          var name = doneItem.assigned[j];
+          if (global.scores[name]) {
+            global.scores[name] += doneItem.points;
+          } else {
+            global.scores[name] = doneItem.points;
+          };
+        };
+
+        socket.emit('points-update', getPoints());
         break;
       };
     };
@@ -105,4 +102,25 @@ global.scores = {
   'Dave': 14,
   'Herman the Crab': -47,
   'Arthur': 21
+};
+
+// Functions
+
+function getPoints() {
+  var scores = (function() {
+    var scores = [];
+    for (var key in global.scores) {
+      if (global.scores.hasOwnProperty(key)) {
+        scores.push({
+          name: key,
+          score: global.scores[key]
+        });
+      };
+    };
+    return scores;
+  })();
+
+  return scores.sort(function(a, b) {
+    return b.score - a.score;
+  });
 };

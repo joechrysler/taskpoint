@@ -19,10 +19,28 @@ function registerSocketEvents() {
     var points = $('.points', li).html();
     li.slideUp();
 
-    var base = $($('li.done')[0]).clone();
-    $('.text', base).html(text);
-    $('.points', base).html(points).removeClass().addClass('points points-' + points);
-    $('ul.assigned-to', base).html($('ul.assigned-to', li).html());
-    $('ul.done').delay(5000).append(base);
+    var done = $($('li.done.base')[0]).clone();
+    done.removeClass('base');
+    $('.text', done).html(text);
+    $('.points', done).html(points).addClass('points-' + points);
+    $('ul.assigned-to', done).html($('ul.assigned-to', li).html());
+    $('ul.done').append(done)
+    done.delay(400).slideDown();
+  });
+
+  socket.on('points-update', function(scores) {
+    $('ol.scores').slideUp(function() {
+      $('ol.scores').html('');
+      $(scores).each(function(index, score) {
+        var li = $('li.score.base').clone();
+        li.removeClass('base');
+        $('.name', li).html(score.name);
+        $('.points', li).html(score.score);
+        $('ol.scores').append(li);
+        li.show();
+      });
+      $('ol.scores').slideDown();
+      console.log($('ol.scores'));
+    });
   });
 };
