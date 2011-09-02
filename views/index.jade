@@ -1,5 +1,12 @@
 h1= title
 
+div.scoreboard
+  ul
+    for score in scores
+      li.score
+        span.points= score.score
+        span.name= score.name
+
 div.todos
   h2 To Do
   ul
@@ -8,6 +15,7 @@ div.todos
         span.points(class='points-' + todo.points)= todo.points
         span.text= todo.text
         span.due Due #{todo.due}
+        button.done Done
         ul.assigned-to
           for name in todo.assigned
             li= name

@@ -32,9 +32,10 @@ ul
 
 .todos
   margin-left 20px
-
+  width 50%
+  
   li.todo
-    width 500px
+    margin-bottom 30px
 
   .text
     font-weight bold
@@ -45,12 +46,11 @@ ul
     color white
     float left
     font-weight bold
-    height 100%
     margin-right 5px
     padding 2px 5px
     position relative
     text-shadow 0 1px 0 black
-    top -2px
+    top 1px
 
     for points in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
       &.points-{points}
@@ -64,3 +64,46 @@ ul
   .due
     color pale
     margin-left 20px
+
+  button.done
+    background red
+    border 1px solid (#f00 - 20%)
+    border-radius 3px
+    color white
+    font-weight bold
+    gradient (#f00 - 10%) (#f00 - 20%) (#f00 - 30%)
+    margin-left 20px
+    padding-bottom 2px
+    position relative
+    text-shadow 0 1px 0 (#f00 - 20%)
+    top -1px
+
+    &:hover
+      gradient (#f00 - 10%) (#f00 - 10%) (#f00 - 30%)
+
+    &:active
+      gradient (#f00 - 30%) (#f00 - 20%) (#f00 - 10%)
+
+.scoreboard
+  background #777
+  border-radius 10px
+  box-shadow 0 5px 10px #777
+  color white
+  float right
+  padding 30px
+  text-shadow 0 1px 1px black
+  width 200px
+
+  .score
+    font-size 16px
+    font-weight bold
+
+    &:last-child
+      margin-bottom 0
+
+    .points
+      background #0a0
+      border-radius 3px
+      box-shadow 0 1px 1px black inset
+      margin-right 10px
+      padding 3px

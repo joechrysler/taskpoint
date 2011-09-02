@@ -14,9 +14,10 @@ ul li {
 }
 .todos {
   margin-left: 20px;
+  width: 50%;
 }
 .todos li.todo {
-  width: 500px;
+  margin-bottom: 30px;
 }
 .todos .text {
   font-weight: bold;
@@ -29,12 +30,11 @@ ul li {
   color: #fff;
   float: left;
   font-weight: bold;
-  height: 100%;
   margin-right: 5px;
   padding: 2px 5px;
   position: relative;
   text-shadow: 0 1px 0 #000;
-  top: -2px;
+  top: 1px;
 }
 .todos .points.points-1 {
   background: #009e00;
@@ -104,4 +104,60 @@ ul li {
 .todos .due {
   color: #999;
   margin-left: 20px;
+}
+.todos button.done {
+  background: #f00;
+  border: 1px solid #c00;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  background: -moz-linear-gradient(top, #e60000 0%, #c00 50%, #b30000);
+  background: -webkit-gradient(linear, left top, left bottom, from(#e60000), color-stop(0.5, #c00), to(#b30000));
+  margin-left: 20px;
+  padding-bottom: 2px;
+  position: relative;
+  text-shadow: 0 1px 0 #c00;
+  top: -1px;
+}
+.todos button.done:hover {
+  background: -moz-linear-gradient(top, #e60000 0%, #e60000 50%, #b30000);
+  background: -webkit-gradient(linear, left top, left bottom, from(#e60000), color-stop(0.5, #e60000), to(#b30000));
+}
+.todos button.done:active {
+  background: -moz-linear-gradient(top, #b30000 0%, #c00 50%, #e60000);
+  background: -webkit-gradient(linear, left top, left bottom, from(#b30000), color-stop(0.5, #c00), to(#e60000));
+}
+.scoreboard {
+  background: #777;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 5px 10px #777;
+  -moz-box-shadow: 0 5px 10px #777;
+  -webkit-box-shadow: 0 5px 10px #777;
+  color: #fff;
+  float: right;
+  padding: 30px;
+  text-shadow: 0 1px 1px #000;
+  width: 200px;
+}
+.scoreboard .score {
+  font-size: 16px;
+  font-weight: bold;
+}
+.scoreboard .score:last-child {
+  margin-bottom: 0;
+}
+.scoreboard .score .points {
+  background: #0a0;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  box-shadow: 0 1px 1px #000 inset;
+  -moz-box-shadow: 0 1px 1px #000 inset;
+  -webkit-box-shadow: 0 1px 1px #000 inset;
+  margin-right: 10px;
+  padding: 3px;
 }
