@@ -1,8 +1,6 @@
 body {
-  padding: 50px;
+  background: #f0f0f0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
+  padding: 50px;
+  text-shadow: 0 1px 0 #fff;
 }

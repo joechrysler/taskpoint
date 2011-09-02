@@ -1,9 +1,11 @@
 {
-    "name": "application-name"
+    "name": "taskpoint"
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
       "express": "2.4.6"
+    , "stylus": ">= 0.0.1"
     , "jade": ">= 0.0.1"
+    , "socket.io": ">= 0.8"
   }
 }
