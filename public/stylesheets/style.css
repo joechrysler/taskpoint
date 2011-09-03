@@ -1,8 +1,40 @@
 body {
   background: #f0f0f0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   padding: 10px 50px;
   text-shadow: 0 1px 0 #fff;
+}
+button {
+  background: #600;
+  border: 1px solid #800;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  background: -moz-linear-gradient(top, #c00 0%, #a00 50%, #800);
+  background: -webkit-gradient(linear, left top, left bottom, from(#c00), color-stop(0.5, #a00), to(#800));
+  padding-bottom: 2px;
+  position: relative;
+  text-shadow: 0 1px 0 #500;
+  top: -1px;
+}
+button.not-done {
+  border-color: #999;
+  background: -moz-linear-gradient(top, #ddd 0%, #bbb 50%, #999);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ddd), color-stop(0.5, #bbb), to(#999));
+  text-shadow: 0 1px 0 #555;
+}
+button:hover {
+  border: 1px solid #a00;
+  background: -moz-linear-gradient(top, #e00 0%, #c00 50%, #a00);
+  background: -webkit-gradient(linear, left top, left bottom, from(#e00), color-stop(0.5, #c00), to(#a00));
+  text-shadow: 0 1px 0 #a00;
+}
+button:active {
+  background: -moz-linear-gradient(top, #c00 0%, #d00 50%, #e00);
+  background: -webkit-gradient(linear, left top, left bottom, from(#c00), color-stop(0.5, #d00), to(#e00));
 }
 ol,
 ul {
@@ -19,7 +51,6 @@ ul {
 div.todos,
 div.done {
   margin-left: 20px;
-  width: 50%;
 }
 div.todos li.todo,
 div.done li.todo {
@@ -135,35 +166,9 @@ div.done .due {
   color: #999;
   margin: 0 20px;
 }
-div.todos button.done,
-div.done button.done {
-  background: #f00;
-  border: 1px solid #c00;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  color: #fff;
-  font-weight: bold;
-  background: -moz-linear-gradient(top, #e60000 0%, #c00 50%, #b30000);
-  background: -webkit-gradient(linear, left top, left bottom, from(#e60000), color-stop(0.5, #c00), to(#b30000));
-  padding-bottom: 2px;
-  position: relative;
-  text-shadow: 0 1px 0 #c00;
-  top: -1px;
-}
-div.todos button.done:hover,
-div.done button.done:hover {
-  background: -moz-linear-gradient(top, #e60000 0%, #e60000 50%, #b30000);
-  background: -webkit-gradient(linear, left top, left bottom, from(#e60000), color-stop(0.5, #e60000), to(#b30000));
-}
-div.todos button.done:active,
-div.done button.done:active {
-  background: -moz-linear-gradient(top, #b30000 0%, #c00 50%, #e60000);
-  background: -webkit-gradient(linear, left top, left bottom, from(#b30000), color-stop(0.5, #c00), to(#e60000));
-}
 div.done .assigned-to {
   display: inline;
-  margin-left: 10px;
+  margin: 0 10px;
 }
 div.done .assigned-to li {
   display: inline-block;
@@ -177,9 +182,6 @@ div.done .assigned-to li:after {
 div.done .assigned-to li:last-child:after {
   content: "";
   margin-right: 0;
-}
-div.done .points {
-  top: -2px;
 }
 .scoreboard {
   background: #777;

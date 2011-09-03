@@ -43,7 +43,7 @@ io.sockets.on('connection', function(socket) {
       if (global.todos[i].text == text) {
         doneItem = global.todos.splice(i, 1)[0];
         global.done.push(doneItem);
-        socket.emit('task-done', text);
+        socket.emit('task-done', doneItem);
         
         for (var j = 0; j < doneItem.assigned.length; j++) {
           var name = doneItem.assigned[j];
@@ -58,6 +58,10 @@ io.sockets.on('connection', function(socket) {
         break;
       };
     };
+  });
+
+  socket.on('task-not-done', function(text) {
+
   });
 });
 

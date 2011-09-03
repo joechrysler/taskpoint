@@ -32,6 +32,7 @@ div.done
         span.points
         span.text
         ul.assigned-to
+        button.not-done Not Done
 
       li.done
         span.points(class='points-' + todo.points)= todo.points
@@ -39,3 +40,4 @@ div.done
         ul.assigned-to
           for name in todo.assigned
             li= name
+        button.not-done Not Done

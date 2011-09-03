@@ -18,9 +18,39 @@ gradient(color-top, color-middle, color-bottom)
 
 body
   background #f0f0f0
-  font 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  font 16px "Lucida Grande", Helvetica, Arial, sans-serif
   padding 10px 50px
   text-shadow 0 1px 0 white
+
+button
+  base-red = #c00
+
+  background (base-red - #600)
+  border 1px solid (base-red - #400)
+  border-radius 3px
+  color white
+  font-size 14px
+  font-weight bold
+  gradient base-red (base-red - #200) (base-red - #400)
+  padding-bottom 2px
+  position relative
+  text-shadow 0 1px 0 #500
+  top -1px
+
+  &.not-done
+    base-gray = #999
+
+    border-color base-gray
+    gradient (base-gray + #444) (base-gray + #222) base-gray
+    text-shadow 0 1px 0 (base-gray - #444)
+
+  &:hover
+    border 1px solid (base-red - #200)
+    gradient (base-red + #200) base-red (base-red - #200)
+    text-shadow 0 1px 0 (base-red - #200)
+
+  &:active
+    gradient base-red (base-red + #100) (base-red + #200)
 
 ol, ul
   margin 0
@@ -34,7 +64,6 @@ ul
 
 div.todos, div.done
   margin-left 20px
-  width 50%
   
   li.todo
     margin-bottom 30px
@@ -67,28 +96,10 @@ div.todos, div.done
     color pale
     margin 0 20px
 
-  button.done
-    background red
-    border 1px solid (#f00 - 20%)
-    border-radius 3px
-    color white
-    font-weight bold
-    gradient (#f00 - 10%) (#f00 - 20%) (#f00 - 30%)
-    padding-bottom 2px
-    position relative
-    text-shadow 0 1px 0 (#f00 - 20%)
-    top -1px
-
-    &:hover
-      gradient (#f00 - 10%) (#f00 - 10%) (#f00 - 30%)
-
-    &:active
-      gradient (#f00 - 30%) (#f00 - 20%) (#f00 - 10%)
-
 div.done
   .assigned-to 
     display inline
-    margin-left 10px
+    margin 0 10px
 
     li
       display inline-block
@@ -102,9 +113,6 @@ div.done
       &:last-child:after
         content ""
         margin-right 0
-
-  .points
-    top -2px
 
 .scoreboard
   background #777
