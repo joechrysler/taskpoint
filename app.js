@@ -58,9 +58,9 @@ console.log("Express server listening on port %d in %s mode", app.address().port
 
 fs.readFile(process.argv[2], function(err, data) {
   var data = JSON.parse(data);
-  global.todos = data.todos;
-  global.done = data.done;
-  global.scores = data.scores;
+  global.todos = data.todos || [];
+  global.done = data.done || [];
+  global.scores = data.scores || {};
 
   setInterval(function() {
     fs.writeFile(process.argv[2], JSON.stringify({
