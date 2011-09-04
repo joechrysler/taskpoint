@@ -68,7 +68,7 @@ fs.readFile(process.argv[2], function(err, data) {
       done: global.done,
       scores: global.scores
     }, null, 2));
-  }, 1000);
+  }, 5000);
 });
 
 // Functions

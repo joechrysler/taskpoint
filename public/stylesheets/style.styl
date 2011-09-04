@@ -1,4 +1,5 @@
 pale = #999
+link = #00a
 
 
 border-radius(n)
@@ -22,6 +23,9 @@ body
   padding 10px 50px
   text-shadow 0 1px 0 white
 
+h2
+  clear left
+
 button
   base-red = #c00
 
@@ -37,12 +41,32 @@ button
   text-shadow 0 1px 0 #500
   top -1px
 
-  &.not-done
+  &.faded
     base-gray = #999
 
     border-color base-gray
     gradient (base-gray + #444) (base-gray + #222) base-gray
     text-shadow 0 1px 0 (base-gray - #444)
+
+  &.plus
+    font-size 12px
+    padding 0 5px 3px
+
+  &.secondary
+    background none
+    border none
+    color link
+    text-shadow 0 1px 0 white
+
+    &:hover
+      background none
+      border none
+      text-decoration underline
+      text-shadow 0 1px 0 white
+
+  &.small
+    font-size 12px
+    padding 3px 5px
 
   &:hover
     border 1px solid (base-red - #200)
@@ -51,6 +75,25 @@ button
 
   &:active
     gradient base-red (base-red + #100) (base-red + #200)
+
+  .plus
+    font-family Impact
+    font-size 16px
+    position relative
+    text-shadow 0 1px 0 #030
+    top 2px
+
+input, textarea
+  border 1px solid #aaa
+  display block
+  font-size 14px
+  margin 3px 0
+  padding 3px
+
+label
+  display block
+  margin 0
+  padding 0
 
 ol, ul
   margin 0
@@ -61,6 +104,34 @@ ol, ul
 
 ul
   list-style-type none
+
+div.add-task 
+  margin-left 20px
+
+  div.buttons
+    float left
+
+    button.cancel
+      display block
+      margin-top 5px
+      text-align center
+      width 100%
+
+  div.form
+    margin-left 95px
+    position relative
+    top 2px
+
+    input
+      &.assignee, &[name='due']
+        width 250px
+
+      &[type='number']
+        width 50px
+        display inline
+
+    textarea
+      width 250px
 
 div.todos, div.done
   margin-left 20px

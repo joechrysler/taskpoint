@@ -2,12 +2,39 @@ var socket = io.connect('http://localhost');
 
 
 $(document).ready(function() {
-  registerSocketEvents();
   registerWidgetEvents();
+  registerSocketEvents();
 });
 
 
 function registerWidgetEvents() {
+  $('button.add-task').bind({
+    click: function() {
+      $('div.add-task div.form').slideDown();
+      $('button.cancel').slideDown();
+      $('button.add-task').removeClass('faded');
+    }
+  });
+
+  $('button.cancel').bind({
+    click: function() {
+      $('div.add-task div.form').slideUp(function() {
+        $('textarea[name="name"]').val('');
+        $('input[name="due"]').val('');
+        $('input[name="points"]').val('0');
+        $('input.assignee:first-child').val('');
+        $('input.assignee:not(:first-child)').remove();
+      });
+      $('div.add-task button.cancel').slideUp();
+    }
+  });
+
+  $('button.add-assignee').bind({
+    click: function() {
+      $('<input class="assignee" placeholder="Assigned To" />').insertBefore($('button.add-assignee'));
+    }
+  });
+
   $('button.done').bind({
     click: function() {
       var text = $('.text', $(this).parent()).html();

@@ -4,6 +4,9 @@ body {
   padding: 10px 50px;
   text-shadow: 0 1px 0 #fff;
 }
+h2 {
+  clear: left;
+}
 button {
   background: #600;
   border: 1px solid #800;
@@ -20,11 +23,31 @@ button {
   text-shadow: 0 1px 0 #500;
   top: -1px;
 }
-button.not-done {
+button.faded {
   border-color: #999;
   background: -moz-linear-gradient(top, #ddd 0%, #bbb 50%, #999);
   background: -webkit-gradient(linear, left top, left bottom, from(#ddd), color-stop(0.5, #bbb), to(#999));
   text-shadow: 0 1px 0 #555;
+}
+button.plus {
+  font-size: 12px;
+  padding: 0 5px 3px;
+}
+button.secondary {
+  background: none;
+  border: none;
+  color: #00a;
+  text-shadow: 0 1px 0 #fff;
+}
+button.secondary:hover {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  text-shadow: 0 1px 0 #fff;
+}
+button.small {
+  font-size: 12px;
+  padding: 3px 5px;
 }
 button:hover {
   border: 1px solid #a00;
@@ -35,6 +58,26 @@ button:hover {
 button:active {
   background: -moz-linear-gradient(top, #c00 0%, #d00 50%, #e00);
   background: -webkit-gradient(linear, left top, left bottom, from(#c00), color-stop(0.5, #d00), to(#e00));
+}
+button .plus {
+  font-family: Impact;
+  font-size: 16px;
+  position: relative;
+  text-shadow: 0 1px 0 #030;
+  top: 2px;
+}
+input,
+textarea {
+  border: 1px solid #aaa;
+  display: block;
+  font-size: 14px;
+  margin: 3px 0;
+  padding: 3px;
+}
+label {
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 ol,
 ul {
@@ -47,6 +90,34 @@ ul li {
 }
 ul {
   list-style-type: none;
+}
+div.add-task {
+  margin-left: 20px;
+}
+div.add-task div.buttons {
+  float: left;
+}
+div.add-task div.buttons button.cancel {
+  display: block;
+  margin-top: 5px;
+  text-align: center;
+  width: 100%;
+}
+div.add-task div.form {
+  margin-left: 95px;
+  position: relative;
+  top: 2px;
+}
+div.add-task div.form input.assignee,
+div.add-task div.form input[name="due"] {
+  width: 250px;
+}
+div.add-task div.form input[type="number"] {
+  width: 50px;
+  display: inline;
+}
+div.add-task div.form textarea {
+  width: 250px;
 }
 div.todos,
 div.done {

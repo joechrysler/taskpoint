@@ -11,6 +11,25 @@ div.scoreboard
         span.points= score.score
         span.name= score.name
 
+div.add-task
+  div.buttons
+    button.add-task.plus.faded
+      span.plus +
+      |  Add Task
+    button.cancel.small.secondary(style='display:none;') Cancel
+
+  div.form(style='display:none;')
+    textarea(name='name', placeholder='To Do')
+    input(name='due', placeholder='Due')
+    label
+      input(type='number', name='points', value='0')
+      | points
+    div.assigned-to
+      input(class='assignee', placeholder='Assigned To')
+      button.add-assignee.plus
+        span.plus +
+        |  Add Assignee
+
 div.todos
   h2 To Do
   ul.todos
@@ -38,7 +57,7 @@ div.done
       span.points
       span.text
       ul.assigned-to
-      button.not-done Not Done
+      button.not-done.faded Not Done
 
     for todo in done
       li.done
@@ -47,4 +66,4 @@ div.done
         ul.assigned-to
           for name in todo.assigned
             li= name
-        button.not-done Not Done
+        button.not-done.faded Not Done
