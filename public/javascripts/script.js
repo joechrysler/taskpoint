@@ -25,40 +25,42 @@ function registerWidgetEvents() {
 
 function registerSocketEvents() {
   socket.on('task-done', function(doneItem) {
-    var li = $('li.todo .text:contains("' + doneItem.text + '")').parent();
-    li.slideUp();
-
-    var done = $($('li.done.base')[0]).clone(true);
-    done.removeClass('base');
-    $('.text', done).html(doneItem.text);
-    $('.points', done).html(doneItem.points).addClass('points-' + doneItem.points);
-    $('ul.assigned-to', done).html($('ul.assigned-to', li).html());
-    $('ul.done').append(done)
-    done.delay(400).slideDown();
+    addTo('li.done.base', 'li.todo', 'ul.done', doneItem);
   });
 
   socket.on('task-not-done', function(undoneItem) {
-    var li = $('li.done .text:contains("' + undoneItem.text + '")').parent();
-    li.slideUp();
-
-    var undone = $($('li.todo.base')[0]).clone(true);
-    undone.removeClass('base');
-    $('.text', undone).html(undoneItem.text);
-    $('.points', undone).html(undoneItem.points).addClass('points-' + undoneItem.points);
-    $('ul.assigned-to', undone).html($('ul.assigned-to', li).html());
-    $('ul.todos').append(undone);
-    undone.delay(400).slideDown();
+    addTo('li.todo.base', 'li.done', 'ul.todos', undoneItem, function(undone) {
+      $('.due', undone).html('Due ' + undoneItem.due);
+    });
   });
 
   socket.on('points-update', function(scores) {
     $('ol.scores').html('');
     $(scores).each(function(index, score) {
-      var li = $('li.score.base').clone();
-      li.removeClass('base');
+      var li = cloneBase('li.score.base');
       $('.name', li).html(score.name);
       $('.points', li).html(score.score);
       $('ol.scores').append(li);
       li.show();
     });
   });
+};
+
+function cloneBase(selector, cloneBehavior) {
+  var cloned = $($(selector)[0]).clone(cloneBehavior || false);
+  cloned.removeClass('base');
+  return cloned;
+};
+
+function addTo(baseSelector, liSelector, newList, data, additionalActions) {
+  var previousContext = $(liSelector + ' .text:contains("' + data.text + '")').parent();
+  previousContext.slideUp();
+
+  var item = cloneBase(baseSelector, true);
+  $('.text', item).html(data.text);
+  $('.points', item).html(data.points).addClass('points-' + data.points);
+  $('ul.assigned-to', item).html($('ul.assigned-to', previousContext).html());
+  $(newList).append(item);
+  if (additionalActions) additionalActions(item);
+  item.delay(400).slideDown();
 };

@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 var express = require('express');
 var socketio = require('socket.io');
 
@@ -52,43 +54,14 @@ io.sockets.on('connection', function(socket) {
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
-// Globals
+// Read in data.
 
-global.todos = [
-  {
-    text: 'Find the toriadors!',
-    points: 12,
-    assigned: ['Dan', 'Tony the Terrible Gladiator'],
-    due: 'June 3, 2012'
-  },
-  {
-    text: 'Move the cat.',
-    points: 15,
-    assigned: ['Wanda, King of the Fish People', 'Arnie', 'Alonzo', 'Rosencrantz & Guildenstern'],
-    due: 'Monday'
-  },
-  {
-    text: 'Figure of if Irene is really a goat or if that\'s just a title.',
-    points: 3,
-    assigned: ['Merv Dole', 'Irene the Goat', 'Walter'],
-    due: 'day after tomorrow'
-  }
-];
-
-global.done = [
-  {
-    text: 'Build an Ice Castle',
-    points: 12,
-    assigned: ['Tray', 'That Guy I Saw in Sears'],
-    due: 'Top of the morn'
-  }
-];
-
-global.scores = {
-  'Dave': 14,
-  'Herman the Crab': -47,
-  'Arthur': 21
-};
+fs.readFile(process.argv[2], function(err, data) {
+  var data = JSON.parse(data);
+  global.todos = data.todos;
+  global.done = data.done;
+  global.scores = data.scores;
+});
 
 // Functions
 

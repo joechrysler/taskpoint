@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "text": "Join the adventure.",
+      "points": 3,
+      "assigned": ["Everyone"],
+      "due": "Tuesday"
+    }
+  ],
+  "done": [
+
+  ],
+  "scores": {
+    "Mike": 3
+  }
+}
