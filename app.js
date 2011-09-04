@@ -45,15 +45,7 @@ io.sockets.on('connection', function(socket) {
         global.done.push(doneItem);
         socket.emit('task-done', doneItem);
         
-        for (var j = 0; j < doneItem.assigned.length; j++) {
-          var name = doneItem.assigned[j];
-          if (global.scores[name]) {
-            global.scores[name] += doneItem.points;
-          } else {
-            global.scores[name] = doneItem.points;
-          };
-        };
-
+        updatePoints(doneItem.assigned, doneItem.points);
         socket.emit('points-update', getPoints());
         break;
       };
@@ -61,7 +53,17 @@ io.sockets.on('connection', function(socket) {
   });
 
   socket.on('task-not-done', function(text) {
+    for (var i = 0; i < global.done.length; i++) {
+      if (global.done[i].text == text) {
+        undoneItem = global.done.splice(i, 1)[0];
+        global.todos.push(undoneItem);
+        socket.emit('task-not-done', undoneItem);
 
+        updatePoints(undoneItem.assigned, -undoneItem.points);
+        socket.emit('points-update', getPoints());
+        break;
+      };
+    };
   });
 });
 
@@ -109,6 +111,17 @@ global.scores = {
 };
 
 // Functions
+
+function updatePoints(names, points) {
+  for (var i = 0; i < names.length; i++) {
+    var name = names[i];
+    if (global.scores[name]) {
+      global.scores[name] += points;
+    } else {
+      global.scores[name] = points;
+    };
+  };
+};
 
 function getPoints() {
   var scores = (function() {

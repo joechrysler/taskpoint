@@ -28,13 +28,26 @@ function registerSocketEvents() {
     var li = $('li.todo .text:contains("' + doneItem.text + '")').parent();
     li.slideUp();
 
-    var done = $($('li.done.base')[0]).clone();
+    var done = $($('li.done.base')[0]).clone(true);
     done.removeClass('base');
     $('.text', done).html(doneItem.text);
     $('.points', done).html(doneItem.points).addClass('points-' + doneItem.points);
     $('ul.assigned-to', done).html($('ul.assigned-to', li).html());
     $('ul.done').append(done)
     done.delay(400).slideDown();
+  });
+
+  socket.on('task-not-done', function(undoneItem) {
+    var li = $('li.done .text:contains("' + undoneItem.text + '")').parent();
+    li.slideUp();
+
+    var undone = $($('li.todo.base')[0]).clone(true);
+    undone.removeClass('base');
+    $('.text', undone).html(undoneItem.text);
+    $('.points', undone).html(undoneItem.points).addClass('points-' + undoneItem.points);
+    $('ul.assigned-to', undone).html($('ul.assigned-to', li).html());
+    $('ul.todos').append(undone);
+    undone.delay(400).slideDown();
   });
 
   socket.on('points-update', function(scores) {
