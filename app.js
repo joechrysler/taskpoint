@@ -61,6 +61,14 @@ fs.readFile(process.argv[2], function(err, data) {
   global.todos = data.todos;
   global.done = data.done;
   global.scores = data.scores;
+
+  setInterval(function() {
+    fs.writeFile(process.argv[2], JSON.stringify({
+      todos: global.todos,
+      done: global.done,
+      scores: global.scores
+    }, null, 2));
+  }, 1000);
 });
 
 // Functions

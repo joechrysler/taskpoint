@@ -3,14 +3,14 @@
     {
       "text": "Join the adventure.",
       "points": 3,
-      "assigned": ["Everyone"],
+      "assigned": [
+        "Merv"
+      ],
       "due": "Tuesday"
     }
   ],
-  "done": [
-
-  ],
+  "done": [],
   "scores": {
-    "Mike": 3
+    "Merv": 0
   }
 }
