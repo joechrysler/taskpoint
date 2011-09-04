@@ -44,9 +44,12 @@ io.sockets.on('connection', function(socket) {
         doneItem = global.todos.splice(i, 1)[0];
         global.done.push(doneItem);
         socket.emit('task-done', doneItem);
+        socket.broadcast.emit('task-done', doneItem);
         
         updatePoints(doneItem.assigned, doneItem.points);
-        socket.emit('points-update', getPoints());
+        var points = getPoints();
+        socket.emit('points-update', points);
+        socket.broadcast.emit('points-update', points);
         break;
       };
     };
@@ -58,9 +61,12 @@ io.sockets.on('connection', function(socket) {
         undoneItem = global.done.splice(i, 1)[0];
         global.todos.push(undoneItem);
         socket.emit('task-not-done', undoneItem);
+        socket.broadcast.emit('task-not-done', undoneItem);
 
         updatePoints(undoneItem.assigned, -undoneItem.points);
-        socket.emit('points-update', getPoints());
+        var points = getPoints();
+        socket.emit('points-update', points);
+        socket.broadcast.emit('points-update', points);
         break;
       };
     };
