@@ -39,37 +39,11 @@ app.get('/', function(req, res){
 
 io.sockets.on('connection', function(socket) {
   socket.on('task-done', function(text) {
-    for (var i = 0; i < global.todos.length; i++) {
-      if (global.todos[i].text == text) {
-        doneItem = global.todos.splice(i, 1)[0];
-        global.done.push(doneItem);
-        socket.emit('task-done', doneItem);
-        socket.broadcast.emit('task-done', doneItem);
-        
-        updatePoints(doneItem.assigned, doneItem.points);
-        var points = getPoints();
-        socket.emit('points-update', points);
-        socket.broadcast.emit('points-update', points);
-        break;
-      };
-    };
+    findTask(global.todos, global.done, text, 'task-done', socket, 1);
   });
 
   socket.on('task-not-done', function(text) {
-    for (var i = 0; i < global.done.length; i++) {
-      if (global.done[i].text == text) {
-        undoneItem = global.done.splice(i, 1)[0];
-        global.todos.push(undoneItem);
-        socket.emit('task-not-done', undoneItem);
-        socket.broadcast.emit('task-not-done', undoneItem);
-
-        updatePoints(undoneItem.assigned, -undoneItem.points);
-        var points = getPoints();
-        socket.emit('points-update', points);
-        socket.broadcast.emit('points-update', points);
-        break;
-      };
-    };
+    findTask(global.done, global.todos, text, 'task-not-done', socket, -1);
   });
 });
 
@@ -118,7 +92,20 @@ global.scores = {
 
 // Functions
 
-function updatePoints(names, points) {
+function findTask(seqFrom, seqTo, text, eventName, socket, pointMultiplier) {
+  for (var i = 0; i < seqFrom.length; i++) {
+    if (seqFrom[i].text == text) {
+      var item = seqFrom.splice(i, 1)[0];
+      seqTo.push(item);
+      socket.emit(eventName, item);
+      socket.broadcast.emit(eventName, item);
+      updatePoints(item.assigned, item.points * pointMultiplier, socket);
+      break;
+    };
+  };
+};
+
+function updatePoints(names, points, socket) {
   for (var i = 0; i < names.length; i++) {
     var name = names[i];
     if (global.scores[name]) {
@@ -127,6 +114,10 @@ function updatePoints(names, points) {
       global.scores[name] = points;
     };
   };
+
+  var points = getPoints();
+  socket.emit('points-update', points);
+  socket.broadcast.emit('points-update', points);
 };
 
 function getPoints() {
