@@ -22,8 +22,9 @@ function registerWidgetEvents() {
         $('textarea[name="name"]').val('');
         $('input[name="due"]').val('');
         $('input[name="points"]').val('0');
-        $('input.assignee:first-child').val('');
-        $('input.assignee:not(:first-child)').remove();
+        $('input.assignee:first').val('');
+        $('input.assignee:not(:first)').remove();
+        $('button.add-task').addClass('faded');
       });
       $('div.add-task button.cancel').slideUp();
     }
@@ -32,6 +33,7 @@ function registerWidgetEvents() {
   $('button.add-assignee').bind({
     click: function() {
       $('<input class="assignee" placeholder="Assigned To" />').insertBefore($('button.add-assignee'));
+      $('input.assignee:last').focus();
     }
   });
 

@@ -4,9 +4,6 @@ body {
   padding: 10px 50px;
   text-shadow: 0 1px 0 #fff;
 }
-h2 {
-  clear: left;
-}
 button {
   background: #600;
   border: 1px solid #800;
@@ -95,7 +92,7 @@ div.add-task {
   margin-left: 20px;
 }
 div.add-task div.buttons {
-  float: left;
+  width: 90px;
 }
 div.add-task div.buttons button.cancel {
   display: block;
@@ -105,8 +102,8 @@ div.add-task div.buttons button.cancel {
 }
 div.add-task div.form {
   margin-left: 95px;
-  position: relative;
-  top: 2px;
+  margin-top: -55px;
+  width: 260px;
 }
 div.add-task div.form input.assignee,
 div.add-task div.form input[name="due"] {
@@ -230,7 +227,7 @@ div.todos ul.assigned-to li,
 div.done ul.assigned-to li {
   color: #999;
   font-size: 13px;
-  margin: 3px 5px 3px 50px;
+  margin: 3px 5px 3px 53px;
 }
 div.todos .due,
 div.done .due {
