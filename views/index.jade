@@ -13,13 +13,16 @@ div.scoreboard
 
 div.add-task
   div.buttons
-    button.add-task.plus.faded
+    button.add-task-form.plus.faded
+      span.plus +
+      |  Add Task
+    button.add-task.plus(style='display:none;')
       span.plus +
       |  Add Task
     button.cancel.small.secondary(style='display:none;') Cancel
 
   div.form(style='display:none;')
-    textarea(name='name', placeholder='To Do')
+    textarea(name='text', placeholder='To Do')
     input(name='due', placeholder='Due')
     label
       input(type='number', name='points', value='0')

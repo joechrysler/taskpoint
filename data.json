@@ -1,6 +1,13 @@
 {
-  "todos": [],
-  "done": [
+  "todos": [
+    {
+      "text": "Stand in the way of progress.",
+      "due": "Never",
+      "points": "-32",
+      "assigned": [
+        "Fritz"
+      ]
+    },
     {
       "text": "Join the adventure.",
       "points": 3,
@@ -17,11 +24,40 @@
         "Frederick"
       ],
       "due": "Right now"
+    },
+    {
+      "text": "Rove about.",
+      "due": "Always",
+      "points": "2",
+      "assigned": [
+        "Theodore"
+      ]
+    },
+    {
+      "text": "Run for your lives!",
+      "due": "Right now!",
+      "points": "23",
+      "assigned": [
+        "Rupert"
+      ]
+    },
+    {
+      "text": "Wiggle like there's no tomorrow!",
+      "due": "Before tomorrow",
+      "points": "1",
+      "assigned": [
+        "Wally"
+      ]
     }
   ],
+  "done": [],
   "scores": {
-    "Alonzo": 10,
-    "Merv": 3,
-    "Frederick": 5
+    "Alonzo": 0,
+    "Merv": 0,
+    "Frederick": 0,
+    "Rupert": 0,
+    "Theodore": 0,
+    "Fritz": 0,
+    "Wally": 0
   }
 }

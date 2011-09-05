@@ -8,26 +8,29 @@ $(document).ready(function() {
 
 
 function registerWidgetEvents() {
-  $('button.add-task').bind({
+  $('button.add-task-form').bind({
     click: function() {
       $('div.add-task div.form').slideDown();
       $('button.cancel').slideDown();
-      $('button.add-task').removeClass('faded');
+      $('button.add-task-form').hide();
+      $('button.add-task').show();
+    }
+  });
+
+  $('button.add-task').bind({
+    click: addTask
+  });
+
+  $('input.assignee').bind({
+    keyup: function(event) {
+      if (event.keyCode == 13) {
+        addTask();
+      };
     }
   });
 
   $('button.cancel').bind({
-    click: function() {
-      $('div.add-task div.form').slideUp(function() {
-        $('textarea[name="name"]').val('');
-        $('input[name="due"]').val('');
-        $('input[name="points"]').val('0');
-        $('input.assignee:first').val('');
-        $('input.assignee:not(:first)').remove();
-        $('button.add-task').addClass('faded');
-      });
-      $('div.add-task button.cancel').slideUp();
-    }
+    click: resetAddForm
   });
 
   $('button.add-assignee').bind({
@@ -73,6 +76,19 @@ function registerSocketEvents() {
       li.show();
     });
   });
+
+  socket.on('new-task', function(task) {
+    console.log(task);
+    var item = cloneBase('li.todo.base', true);
+    $('.text', item).html(task.text);
+    $('.points', item).html(task.points).addClass('points-' + task.points);
+    $('.due', item).html('Due ' + task.due);
+    $(task.assigned).each(function(index, name) {
+      $('ul.assigned-to', item).append('<li>' + name + '<li>');
+    });
+    $('ul.todos').append(item);
+    item.slideDown();
+  });
 };
 
 function cloneBase(selector, cloneBehavior) {
@@ -92,4 +108,33 @@ function addTo(baseSelector, liSelector, newList, data, additionalActions) {
   $(newList).append(item);
   if (additionalActions) additionalActions(item);
   item.delay(400).slideDown();
+};
+
+function resetAddForm() {
+  $('div.add-task div.form').slideUp(function() {
+    $('textarea[name="text"]').val('');
+    $('input[name="due"]').val('');
+    $('input[name="points"]').val('0');
+    $('input.assignee:first').val('');
+    $('input.assignee:not(:first)').remove();
+  });
+  $('div.add-task button.cancel').slideUp();
+  $('button.add-task').hide();
+  $('button.add-task-form').show();
+};
+
+function addTask() {
+  var assignees = [];
+  $('input.assignee').each(function(index, assignee) {
+    assignees.push($(assignee).val());
+  });
+
+  socket.emit('new-task', {
+    text: $('textarea[name="text"]').val(),
+    due: $('input[name="due"]').val(),
+    points: $('input[name="points"]').val(),
+    assigned: assignees
+  });
+
+  resetAddForm();
 };

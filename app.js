@@ -47,6 +47,12 @@ io.sockets.on('connection', function(socket) {
   socket.on('task-not-done', function(text) {
     findTask(global.done, global.todos, text, 'task-not-done', socket, -1);
   });
+
+  socket.on('new-task', function(task) {
+    global.todos.push(task);
+    socket.emit('new-task', task);
+    socket.broadcast.emit('new-task', task);
+  });
 });
 
 // Run
