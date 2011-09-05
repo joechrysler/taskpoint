@@ -47,7 +47,10 @@ button
 
   &.plus
     font-size 12px
-    padding 0 5px 3px
+
+    &:before
+      content "\271A"    
+      padding-right 3px
 
   &.secondary
     background none
@@ -72,13 +75,6 @@ button
 
   &:active
     gradient base-red (base-red + #100) (base-red + #200)
-
-  .plus
-    font-family Impact
-    font-size 16px
-    position relative
-    text-shadow 0 1px 0 #030
-    top 2px
 
 input, textarea
   border 1px solid #aaa

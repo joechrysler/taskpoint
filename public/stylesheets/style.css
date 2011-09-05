@@ -28,7 +28,10 @@ button.faded {
 }
 button.plus {
   font-size: 12px;
-  padding: 0 5px 3px;
+}
+button.plus:before {
+  content: "\271A";
+  padding-right: 3px;
 }
 button.secondary {
   background: none;
@@ -55,13 +58,6 @@ button:hover {
 button:active {
   background: -moz-linear-gradient(top, #c00 0%, #d00 50%, #e00);
   background: -webkit-gradient(linear, left top, left bottom, from(#c00), color-stop(0.5, #d00), to(#e00));
-}
-button .plus {
-  font-family: Impact;
-  font-size: 16px;
-  position: relative;
-  text-shadow: 0 1px 0 #030;
-  top: 2px;
 }
 input,
 textarea {

@@ -13,12 +13,8 @@ div.scoreboard
 
 div.add-task
   div.buttons
-    button.add-task-form.plus.faded
-      span.plus +
-      |  Add Task
-    button.add-task.plus(style='display:none;')
-      span.plus +
-      |  Add Task
+    button.add-task-form.plus.faded Add Task
+    button.add-task.plus(style='display:none;') Add Task
     button.cancel.small.secondary(style='display:none;') Cancel
 
   div.form(style='display:none;')
@@ -29,9 +25,7 @@ div.add-task
       | points
     div.assigned-to
       input(class='assignee', placeholder='Assigned To')
-      button.add-assignee.plus.faded
-        span.plus +
-        |  Add Assignee
+      button.add-assignee.plus.faded Add Assignee
 
 div.todos
   h2 To Do

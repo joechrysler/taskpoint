@@ -17,15 +17,6 @@
       "due": "Tuesday"
     },
     {
-      "text": "Start the music.",
-      "points": 10,
-      "assigned": [
-        "Alonzo",
-        "Frederick"
-      ],
-      "due": "Right now"
-    },
-    {
       "text": "Rove about.",
       "due": "Always",
       "points": "2",
@@ -50,11 +41,21 @@
       ]
     }
   ],
-  "done": [],
+  "done": [
+    {
+      "text": "Start the music.",
+      "points": 10,
+      "assigned": [
+        "Alonzo",
+        "Frederick"
+      ],
+      "due": "Right now"
+    }
+  ],
   "scores": {
-    "Alonzo": 0,
+    "Alonzo": 10,
     "Merv": 0,
-    "Frederick": 0,
+    "Frederick": 5,
     "Rupert": 0,
     "Theodore": 0,
     "Fritz": 0,
