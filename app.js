@@ -89,11 +89,10 @@ function findTask(seqFrom, seqTo, text, eventName, socket, pointMultiplier) {
 function updatePoints(names, points, socket) {
   for (var i = 0; i < names.length; i++) {
     var name = names[i];
-    if (global.scores[name]) {
-      global.scores[name] += points;
-    } else {
-      global.scores[name] = points;
+    if (!global.scores[name]) {
+      global.scores[name] = 0;
     };
+    global.scores[name] += Math.round(points / (i + 1));
   };
 
   var points = getPoints();

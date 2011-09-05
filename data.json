@@ -1,14 +1,5 @@
 {
-  "todos": [
-    {
-      "text": "Start the music.",
-      "points": 10,
-      "assigned": [
-        "Alonzo"
-      ],
-      "due": "Right now"
-    }
-  ],
+  "todos": [],
   "done": [
     {
       "text": "Join the adventure.",
@@ -17,10 +8,20 @@
         "Merv"
       ],
       "due": "Tuesday"
+    },
+    {
+      "text": "Start the music.",
+      "points": 10,
+      "assigned": [
+        "Alonzo",
+        "Frederick"
+      ],
+      "due": "Right now"
     }
   ],
   "scores": {
-    "Alonzo": 0,
-    "Merv": 3
+    "Alonzo": 10,
+    "Merv": 3,
+    "Frederick": 5
   }
 }
