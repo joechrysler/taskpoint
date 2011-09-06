@@ -71,7 +71,7 @@ function registerSocketEvents() {
     $(scores).each(function(index, score) {
       var li = cloneBase('li.score.base');
       $('.name', li).html(score.name);
-      $('.points', li).html(score.score);
+      $('.points', li).html(Math.round(score.score));
       $('ol.scores').append(li);
       li.show();
     });

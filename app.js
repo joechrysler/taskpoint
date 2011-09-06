@@ -98,7 +98,7 @@ function updatePoints(names, points, socket) {
     if (!global.scores[name]) {
       global.scores[name] = 0;
     };
-    global.scores[name] += Math.round(points / (i + 1));
+    global.scores[name] += points / (i + 1);
   };
 
   var points = getPoints();
