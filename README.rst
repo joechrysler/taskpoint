@@ -4,3 +4,7 @@ TaskPoint
 Tagger is a Node.js web app using the Express_ framework.
 
 .. _Express: http://expressjs.com/index.html
+
+It can be invoked from the command line using::
+
+    node app.js settings.json data.json
