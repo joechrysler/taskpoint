@@ -1,7 +1,7 @@
 TaskPoint
 =========
 
-Tagger is a Node.js web app for organizing blobs of text with tags.
+TastPoint is a Node.js web app for organizing blobs of text with tags.
 
 Dependences
 -----------
