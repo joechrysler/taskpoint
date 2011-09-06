@@ -1,7 +1,7 @@
 TaskPoint
 =========
 
-TastPoint is a Node.js web app for organizing blobs of text with tags.
+TastPoint is a Node.js web app for giving points and assignees to tasks, then keeping score based on what is done.
 
 Dependences
 -----------
