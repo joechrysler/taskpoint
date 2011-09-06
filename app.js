@@ -8,6 +8,11 @@ var io = socketio.listen(app);
 
 // Configuration
 
+global.settings = JSON.parse(fs.readFileSync(process.argv[2]));
+global.settings.host = global.settings.host || 'localhost';
+global.settings.port = global.settings.port || 3000;
+global.settings.allowAdding = (global.settings.allowAdding == undefined) ? true : global.settings.allowAdding;
+
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -30,6 +35,7 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render('index', {
+    settings: global.settings,
     title: 'TaskPoint',
     todos: global.todos,
     done: global.done,
@@ -57,19 +63,19 @@ io.sockets.on('connection', function(socket) {
 
 // Run
 
-app.listen(3000);
+app.listen(global.settings.port);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
 // Read in data.
 
-fs.readFile(process.argv[2], function(err, data) {
+fs.readFile(process.argv[3], function(err, data) {
   var data = JSON.parse(data);
   global.todos = data.todos || [];
   global.done = data.done || [];
   global.scores = data.scores || {};
 
   setInterval(function() {
-    fs.writeFile(process.argv[2], JSON.stringify({
+    fs.writeFile(process.argv[3], JSON.stringify({
       todos: global.todos,
       done: global.done,
       scores: global.scores

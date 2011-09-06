@@ -1,6 +1,3 @@
-var socket = io.connect('http://localhost');
-
-
 $(document).ready(function() {
   registerWidgetEvents();
   registerSocketEvents();
