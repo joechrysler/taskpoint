@@ -8,7 +8,7 @@ div.scoreboard
   ol.scores
     for score in scores
       li.score
-        span.points= score.score
+        span.points= Math.round(score.score)
         span.name= score.name
 
 div.add-task
@@ -21,7 +21,7 @@ div.add-task
     textarea(name='text', placeholder='To Do')
     input(name='due', placeholder='Due')
     label
-      input(type='number', name='points', value='0')
+      input(type='number', name='points', value=0, max=99)
       | points
     div.assigned-to
       input(class='assignee', placeholder='Assigned To')

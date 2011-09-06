@@ -53,6 +53,14 @@ function registerWidgetEvents() {
       socket.emit('task-not-done', text);
     }
   });
+
+  $('input[max="99"]').bind({
+    keypress: function(event) {
+      if (parseInt($(this).val()) > 9) {
+        event.preventDefault();
+      }
+    }
+  });
 };
 
 function registerSocketEvents() {
