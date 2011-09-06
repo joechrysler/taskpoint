@@ -1,5 +1,29 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "text": "Steal from the rich",
+      "due": "Yore",
+      "points": "4",
+      "assigned": [
+        "Rocky",
+        "Balboa"
+      ]
+    },
+    {
+      "text": "Stand alonnnnnee!",
+      "due": "Long, long ago",
+      "points": "5",
+      "assigned": [
+        "Hermit",
+        "Crab"
+      ]
+    }
+  ],
   "done": [],
-  "scores": {}
+  "scores": {
+    "Rocky": 0,
+    "Balboa": 0,
+    "Hermit": 0,
+    "Crab": 2
+  }
 }
