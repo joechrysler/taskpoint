@@ -78,14 +78,15 @@ function registerSocketEvents() {
   });
 
   socket.on('new-task', function(task) {
-    console.log(task);
     var item = cloneBase('li.todo.base', true);
     $('.text', item).html(task.text);
     $('.points', item).html(task.points).addClass('points-' + task.points);
     $('.due', item).html('Due ' + task.due);
+
     $(task.assigned).each(function(index, name) {
-      $('ul.assigned-to', item).append('<li>' + name + '<li>');
+      $('ul.assigned-to', item).append('<li>' + name + '</li>');
     });
+
     $('ul.todos').append(item);
     item.slideDown();
   });
@@ -126,7 +127,9 @@ function resetAddForm() {
 function addTask() {
   var assignees = [];
   $('input.assignee').each(function(index, assignee) {
-    assignees.push($(assignee).val());
+    if ($(assignee).val().trim() != '') {
+      assignees.push($(assignee).val());
+    };
   });
 
   socket.emit('new-task', {
