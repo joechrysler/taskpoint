@@ -60,4 +60,8 @@ the To Do list and take points away from the assignees.
 Contributing
 ============
 
-Feel free to fix any bugs, add features, whatever you want!
+Feel free to fix any bugs, add features, whatever you want! Here's a starter list of things that can be done:
+
+- Make the title configurable.
+- User authentication.
+- Permissions.
