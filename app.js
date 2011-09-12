@@ -11,6 +11,7 @@ var io = socketio.listen(app);
 global.settings = JSON.parse(fs.readFileSync(process.argv[2]));
 global.settings.host = global.settings.host || 'localhost';
 global.settings.port = global.settings.port || 3000;
+global.settings.title = global.settings.title || 'TaskPoint';
 global.settings.allowAdding = (global.settings.allowAdding == undefined) ? true : global.settings.allowAdding;
 
 app.configure(function(){
@@ -36,7 +37,7 @@ app.configure('production', function(){
 app.get('/', function(req, res){
   res.render('index', {
     settings: global.settings,
-    title: 'TaskPoint',
+    title: global.settings.title,
     todos: global.todos,
     done: global.done,
     scores: getPoints()
